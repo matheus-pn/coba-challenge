@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    volumes:
+      - bundle:/usr/local/bundle
+      - bundle:/usr/src/app/vendor/bundle
+    ports:
+      - "3000:3000"
+
+volumes:
+  bundle:
