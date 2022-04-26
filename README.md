@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Dependencies
+    - Ruby 3.1.2
+    - Bundler 2.3.7
+    - sqlite3 libsqlite3-dev
 
-Things you may want to cover:
+* Installation
+    - rails db:create db:migrate
 
-* Ruby version
+* Running the CSV importer script
+    - rails db:seed
 
-* System dependencies
+* Docker setup
+    - docker-compose build
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Tests
+    - rails test
