@@ -64,11 +64,18 @@ module Superstore
     def import!
       ApplicationRecord.transaction do
         @csv.each_with_index do |row, index|
-          # debugger
-          customer = Customer.find_or_initialize_by(attributes_from(row, CUSTOMER_MAPPING))
-          order = Order.find_or_initialize_by(order_attributes_from(row))
-          category = ProductCategory.find_or_initialize_by(attributes_from(row, PRODUCT_CATEGORY_MAPPING))
-          subcategory = ProductSubcategory.find_or_initialize_by(attributes_from(row, PRODUCT_SUBCATEGORY_MAPPING))
+          order = Order.find_or_initialize_by(
+            order_attributes_from(row)
+          )
+          customer = Customer.find_or_initialize_by(
+            attributes_from(row, CUSTOMER_MAPPING)
+          )
+          category = ProductCategory.find_or_initialize_by(
+            attributes_from(row, PRODUCT_CATEGORY_MAPPING)
+          )
+          subcategory = ProductSubcategory.find_or_initialize_by(
+            attributes_from(row, PRODUCT_SUBCATEGORY_MAPPING)
+          )
           product = Product.find_or_initialize_by(
             attributes_from(row, PRODUCT_MAPPING, product_category: category, product_subcategory: subcategory)
           )

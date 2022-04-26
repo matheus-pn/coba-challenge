@@ -7,8 +7,14 @@ class LineItemTest < ActiveSupport::TestCase
   end
 
   test "invalid item" do
-    item = line_items(:one)
-    item.quantity = 0
-    assert_not item.valid?
+    [
+      [:discount, 2],
+      [:discount, -1],
+      [:sales,  -2]
+    ].each do |field, value|
+      item = line_items(:one)
+      item.send("#{field}=", value)
+      assert_not item.valid?
+    end
   end
 end
